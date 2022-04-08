@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Peg {
     private int pegNum;
     private int numDiscs;  // The total number of discs in the current game.
@@ -22,24 +24,23 @@ public class Peg {
         String s = "Peg " + pegNum;
         return s;
     }
+
     public boolean addDisc(int whichOne) {
-        if (discs[count - 1] > whichOne || count == 0) {
+        if (count == 0 || discs[count - 1] > whichOne) {
             discs[count] = whichOne;
             count += 1;
             return true;
         }
 
+        System.out.println("False");
         return false;
     }
 
-    public int popDisc()
-    {
-        if (count == 0)
-            return 0;
-
+    public int popDisc() {
         count -= 1;
-        discs[count - 1] = 0;
-        return count;
+        int a = discs[count];
+        discs[count] = 0;
+        return a;
     }
 
     public boolean moveTopDisc(Peg newPeg)
