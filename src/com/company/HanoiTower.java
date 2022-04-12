@@ -12,7 +12,7 @@ public class HanoiTower {
         peg2 = new Peg(2, num);
         peg3 = new Peg(3, num);
 
-        for (int i = numDiscs; i <= 1; i ++)
+        for (int i = numDiscs; i >= 1; i ++)
             peg1.addDisc(i);
 
     }
@@ -24,12 +24,15 @@ public class HanoiTower {
     private void moveTower(Peg startPeg, Peg endPeg, Peg extraPeg, int numtoMove) {
         // TODO move discs(number input) from the start peg to the end peg
 
-        if (numtoMove == 1)
+        if (numtoMove == 1){
             startPeg.moveTopDisc(endPeg);
-
-        startPeg.moveTopDisc(extraPeg);
-        moveTower(startPeg, extraPeg, endPeg, numtoMove);
-
+            return;
+        }
+        else{
+            moveTower(startPeg, extraPeg, endPeg, numtoMove - 1);
+            startPeg.moveTopDisc(extraPeg);
+            moveTower(extraPeg, endPeg, startPeg, numtoMove - 1);
+        }
     }
     public static void main(String[] args) {
         // TODO Auto-generated method stub
