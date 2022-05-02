@@ -28,16 +28,21 @@ public class HanoiTower {
             startPeg.moveTopDisc(endPeg);
             return;
         }
-        else{
-            moveTower(startPeg, extraPeg, endPeg, numtoMove - 1);
-            startPeg.moveTopDisc(extraPeg);
-            moveTower(extraPeg, endPeg, startPeg, numtoMove - 1);
+
+        if (numtoMove < 1){
+            return;
         }
+
+        moveTower(startPeg, extraPeg, endPeg, numtoMove - 1);
+        startPeg.moveTopDisc(endPeg);
+        moveTower(extraPeg, endPeg, startPeg, numtoMove - 1);
+
     }
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         HanoiTower ht = new HanoiTower(5);
         ht.solveTower();
+
     }
 
 }
