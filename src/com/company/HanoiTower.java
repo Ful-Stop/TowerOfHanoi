@@ -12,7 +12,7 @@ public class HanoiTower {
         peg2 = new Peg(2, num);
         peg3 = new Peg(3, num);
 
-        for (int i = numDiscs; i >= 1; i ++)
+        for (int i = numDiscs; i >= 1; i --)
             peg1.addDisc(i);
 
     }
